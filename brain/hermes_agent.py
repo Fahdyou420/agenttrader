@@ -62,7 +62,7 @@ def run_hermes(user_message: str, vault_context: str) -> dict:
         
         while True:
             response = ollama.chat(
-                model="hf.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF:latest",
+                model="qwen3.5:9b",  # Fallback to an available model that natively supports tool calls in Ollama
                 messages=messages,
                 tools=TOOLS
             )

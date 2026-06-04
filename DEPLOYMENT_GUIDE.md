@@ -29,7 +29,7 @@ To leverage your local NVIDIA RTX 4060 effectively, Ollama runs natively on the 
 2. Pull the required models as specified in `config/models.yaml`:
    ```bash
    ollama pull hf.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF:latest
-   ollama pull qwen2.5:9b
+   ollama pull qwen3.5:9b
    ollama pull nomic-embed-text:latest
    ```
 

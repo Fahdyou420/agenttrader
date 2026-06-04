@@ -15,7 +15,7 @@ def dispatch_to_qwen(task_description: str, context: str) -> str:
     
     try:
         response = ollama.chat(
-            model="qwen2.5:9b",
+            model="qwen3.5:9b",
             messages=messages
         )
         return response.message.content
