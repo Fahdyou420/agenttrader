@@ -64,7 +64,7 @@ With MT5 streaming data natively and Ollama hosting the models natively, we spin
 
 ## Step 5: Access the Dashboard
 Open your brower and navigate to:
-`http://localhost:5000`
+`http://localhost:3000`
 
 The dashboard uses Server-Sent Events (SSE) to live-update when Hermes issues trade commands. 
 

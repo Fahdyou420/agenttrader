@@ -3,4 +3,4 @@ paths:
   chroma: ${CHROMA_PATH}
 ports:
   zmq: ${ZMQ_PORT}
-  dashboard: 5000
+  dashboard: 3000
