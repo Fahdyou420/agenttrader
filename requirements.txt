@@ -4,7 +4,7 @@ ollama==0.1.7
 pyzmq==25.1.2
 pyyaml==6.0.1
 pandas==2.2.1
-git+https://github.com/twopirllc/pandas-ta.git@main
+pandas-ta
 ccxt==4.2.53
 yfinance==0.2.37
 vectorbt==0.25.4
