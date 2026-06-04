@@ -1,0 +1,14 @@
+risk_limits:
+  max_risk_per_trade_pct: 1.0
+  max_daily_drawdown_pct: 2.0
+  hard_stop_daily_dd_pct: 5.0
+  max_total_drawdown_pct: 10.0
+  max_concurrent_trades: 3
+  min_rr_ratio: 1.5
+  max_spread_atr_pct: 15.0
+  min_confidence: 0.72
+
+trading_sessions:
+  allowed:
+    - London
+    - NY

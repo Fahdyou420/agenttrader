@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; margin: 0;">
+<head>
+    <meta charset="UTF-8">
+    <title>HERMES Trading Intelligence System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <style>
+        body { margin: 0; height: 100%; display: flex; flex-direction: column; overflow: hidden; background-color: #0a0a0b; color: #e2e8f0; font-family: ui-sans-serif, system-ui, sans-serif; }
+    </style>
+</head>
+<body class="bg-[#0a0a0b] text-[#e2e8f0] font-sans h-full flex flex-col overflow-hidden">
+    <div class="w-full h-full flex flex-col p-6 overflow-hidden select-none">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded flex items-center justify-center font-bold text-white text-xl">H</div>
+                <div>
+                    <h1 class="text-xl font-semibold tracking-tight uppercase m-0">HERMES Trading Dashboard</h1>
+                    <p class="text-xs text-slate-500 font-mono m-0 mt-1">Autonomous Intelligence System</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <div class="flex items-center bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></div>
+                    <span class="text-xs font-bold text-emerald-500 uppercase">System Active</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Grid Layout -->
+        <div class="grid grid-cols-12 gap-4 flex-grow overflow-hidden">
+            
+            <!-- Left Side / Live Feed -->
+            <div class="col-span-8 flex flex-col bg-[#111114] border border-white/5 rounded-lg overflow-hidden">
+                <div class="bg-white/5 px-4 py-2 border-b border-white/5 flex justify-between items-center">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 italic m-0">Live Signal Feed</h2>
+                    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded">SSE_CONNECTED</span>
+                </div>
+                
+                <div class="p-4 font-mono text-xs space-y-3 overflow-y-auto flex-grow bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]">
+                    <div hx-ext="sse" sse-connect="/stream" class="flex flex-col gap-2 h-full">
+                        <div sse-swap="message" hx-swap="afterbegin" class="flex flex-col gap-3 text-emerald-400 font-mono whitespace-pre-wrap break-words">
+                            <!-- Signals will appear here -->
+                            <p class="text-slate-500 italic p-3 border-l-2 border-slate-700 bg-[#111114] rounded shadow-md m-0">Waiting for signals...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side / Vault Status -->
+            <div class="col-span-4 flex flex-col space-y-4">
+                <div class="bg-[#111114] border border-white/5 rounded-lg p-5 shadow-lg shadow-black/50">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 m-0">Vault Status</h2>
+                    <div class="text-sm font-mono text-emerald-400 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded shadow-inner lead whitespace-pre-wrap">Active, Connected to ChromaDB. Memory nodes online.</div>
+                </div>
+                
+                <!-- Additional placeholder padding to match the design's right side -->
+                <div class="bg-indigo-600/5 border border-indigo-500/20 rounded-lg p-5 flex-grow flex flex-col shadow-lg shadow-black/50">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-4 m-0">Diagnostics</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-xs font-mono border-b border-white/5 pb-2">
+                            <span class="text-slate-500 uppercase">GPU Usage</span>
+                            <span class="text-emerald-500">OPTIMAL</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-mono border-b border-white/5 pb-2">
+                            <span class="text-slate-500 uppercase">Memory Footprint</span>
+                            <span class="text-yellow-500">STABLE</span>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="p-3 bg-black/40 rounded border border-white/5">
+                            <p class="text-[10px] text-slate-500 leading-relaxed m-0">
+                                Hermes autonomous mode active. Self-learning and continuous R&D modules are running in background.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>

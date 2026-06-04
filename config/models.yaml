@@ -1,0 +1,10 @@
+models:
+  brain:
+    name: "hf.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF:latest"
+    host: ${OLLAMA_HOST}
+  executor:
+    name: "qwen2.5:9b"
+    host: ${OLLAMA_HOST}
+  embedder:
+    name: "nomic-embed-text:latest"
+    host: ${OLLAMA_HOST}

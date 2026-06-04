@@ -1,0 +1,57 @@
+services:
+  hermes-brain:
+    build: .
+    command: python -m brain.hermes_agent
+    environment:
+      - OLLAMA_HOST=host.docker.internal:11434
+      - VAULT_PATH=/vault
+      - CHROMA_PATH=/chroma
+      - ZMQ_HOST=host.docker.internal
+    volumes:
+      - ${VAULT_PATH:-./vault}:/vault
+      - ./chroma_db:/chroma
+    depends_on:
+      - chromadb
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  signal-scheduler:
+    build: .
+    command: python -m schedulers.signal_scheduler
+    environment:
+      - OLLAMA_HOST=host.docker.internal:11434
+      - VAULT_PATH=/vault
+    volumes:
+      - ${VAULT_PATH:-./vault}:/vault
+      - ./chroma_db:/chroma
+    restart: unless-stopped
+
+  rd-agent:
+    build: .
+    command: python -m schedulers.rd_scheduler
+    environment:
+      - OLLAMA_HOST=host.docker.internal:11434
+      - VAULT_PATH=/vault
+    volumes:
+      - ${VAULT_PATH:-./vault}:/vault
+      - ./chroma_db:/chroma
+    restart: unless-stopped
+
+  chromadb:
+    image: chromadb/chroma:latest
+    volumes:
+      - "./chroma_db:/chroma/chroma"
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    command: python -m dashboard.app
+    ports:
+      - "5000:5000"
+    volumes:
+      - ${VAULT_PATH:-./vault}:/vault
+      - ./chroma_db:/chroma
+    restart: unless-stopped

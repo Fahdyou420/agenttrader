@@ -1,0 +1,6 @@
+paths:
+  vault: ${VAULT_PATH}
+  chroma: ${CHROMA_PATH}
+ports:
+  zmq: ${ZMQ_PORT}
+  dashboard: 5000
